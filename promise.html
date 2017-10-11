@@ -1,0 +1,81 @@
+﻿<html>
+<head>
+<title>懒加载</title>
+<meta charset="utf-8">
+<script src="lightbox/jquery-2.1.4.min.js"></script>
+<!-- <script src="jquery.lazyload.min.js"></script> -->
+<script>
+/*var promise = new Promise(function(resolve, reject) {
+  console.log('Promise');
+  resolve();
+});
+
+promise.then(function() {
+  console.log('resolved.');
+});
+
+console.log('Hi!');*/
+$(function(){
+	//loadImageAsync('lightbox/img/z1.jpg');
+})
+
+function loadImageAsync(url) {
+  return new Promise(function(resolve, reject) {
+    var image = new Image();
+	//var image=$('.imge');
+
+    image.onload = function() {
+		
+      resolve(image);
+	  
+    };
+
+    image.onerror = function() {
+      reject(new Error('Could not load image at ' + url));
+    };
+	
+    image.src = url;
+	//image.width = 400;
+	$('body').html(image);
+  });
+}
+
+/*var p1 = new Promise(function (resolve, reject) {
+  setTimeout(() => reject(new Error('fail')), 3000)
+})
+
+var p2 = new Promise(function (resolve, reject) {
+  setTimeout(() => resolve(p1), 1000)
+})
+
+p2
+  .then(result => console.log(result),error => console.log(error));
+  //.catch()*/
+
+  
+  
+/*new Promise((resolve, reject) => {
+  resolve(1);
+  console.log(2);
+}).then(r => {
+  console.log(r);
+});*/
+
+var someAsyncThing = function() {
+  return new Promise(function(resolve, reject) {
+    // 下面一行会报错，因为x没有声明
+    resolve(x + 2);
+  });
+};
+
+someAsyncThing().then(function() {
+  console.log('everything is great');
+});
+
+setTimeout(() => { console.log(123) }, 2000);
+</script>
+</head>
+<body>
+
+</body>
+</html>
