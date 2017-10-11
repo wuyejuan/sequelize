@@ -1,0 +1,37 @@
+﻿<html>
+<head>
+<title>懒加载</title>
+<meta charset="gb2312">
+<script src="jquery-1.7.1.min.js"></script>
+<script src="jquery.lazyload.min.js"></script>
+<script>
+$(function() {
+    $("img").lazyload({
+        event : "sporty"
+    });
+});
+
+$(window).bind("load", function() {
+    var timeout = setTimeout(function() { $("img").trigger("sporty") }, 5000);
+})
+</script>
+<style>
+*{padding:0;margin:0;}
+img{width:100%;margin-bottom:20px;background:#dedede;}
+figure{width:400px;height:auto;position:relative;}
+figcaption{position:absolute;width:200px;top:15%;left:0;background:rgba(255,255,255,0.5);transition:all ease-in 2s;line-height:36px;border-top-right-radius:5px;border-bottom-right-radius:5px;text-indent:5px;}
+figcaption:hover{width:300px;transform:rotate(180deg);}
+</style>
+</head>
+<body>
+	<figure>
+		<img src="1.jpg" />
+		<figcaption>图片1</figcaption>
+	</figure>
+<!-- <img src="2.jpg" />
+<img src="3.jpg" />
+<img src="4.jpg" />
+<img src="5.jpg" />
+<img src="6.jpg" /> -->
+</body>
+</html>
