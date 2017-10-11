@@ -11,7 +11,8 @@ let
         email: 'john-' + Date.now() + '@garfield.pet',
         passwd: 'hahaha'
     });
-    console.log('created: ' + JSON.stringify(user));
+   // console.log('created: ' + JSON.stringify(user));
+     console.log('created: ' + JSON.stringify(user));
     var cat = await Pet.create({
         ownerId: user.id,
         name: 'Garfield',
